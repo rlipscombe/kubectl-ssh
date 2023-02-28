@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-pod=$1
-
-exec 3< <(kubectl port-forward "$pod" 0:22)
+exec 3< <(kubectl port-forward "$@" 0:22)
 read <&3 -r line
 
 re='^Forwarding from .*:([0-9]+) -> 22$'
