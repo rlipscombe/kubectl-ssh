@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+pod=$1
+
+exec 3< <(kubectl port-forward "$pod" 0:22)
+read <&3 -r line
+
+re='^Forwarding from .*:([0-9]+) -> 22$'
+if [[ $line =~ $re ]]; then
+    port="${BASH_REMATCH[1]}"
+    ssh -p "$port" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null localhost
+else
+    exit 1
+fi
