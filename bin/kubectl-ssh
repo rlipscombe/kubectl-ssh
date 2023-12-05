@@ -4,6 +4,7 @@ exec 3< <(kubectl port-forward "$@" 0:22)
 
 # When the script exits, kill the port-forward process
 pid=$!
+# shellcheck disable=SC2064
 trap "kill $pid" EXIT
 
 # Find out which port number was used
