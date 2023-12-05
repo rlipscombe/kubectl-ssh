@@ -10,11 +10,13 @@ they're executable.
 ## Usage
 
 ```sh
-kubectl ssh POD     # Connect to a pod in the current namespace.
+# Connect to a pod in the current namespace.
+kubectl ssh POD
 ```
 
 ```sh
-kubectl -n NAMESPACE ssh deployment/DEPLOYMENT  # Connect to an arbitrary pod in the named deployment.
+# Connect to an arbitrary pod in the named deployment.
+kubectl -n NAMESPACE ssh deployment/DEPLOYMENT
 ```
 
 ## Tab Completion
